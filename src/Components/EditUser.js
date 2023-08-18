@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect}from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -8,13 +8,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 function EditUser({ users, setUsers }) {
 
   let params = useParams()
-  
+
  
-  let [name,setName] = useState(users[params.id].name)
-  let [email,setEmail] = useState(users[params.id].email)
-  let [mobile,setMobile] = useState(users[params.id].mobile)
-  let [city,setCity] = useState(users[params.id].city)
-  let [batch,setBatch] = useState(users[params.id].batch)
+  let [name,setName] = useState()
+  let [email,setEmail] = useState()
+  let [mobile,setMobile] = useState()
+  let [city,setCity] = useState()
+  let [batch,setBatch] = useState()
   let navigate = useNavigate()
 
   let handleSave = ()=>{
@@ -29,6 +29,22 @@ function EditUser({ users, setUsers }) {
     setUsers(newArray)
     navigate('/dashboard')
   }
+
+  useEffect(()=>{
+    if(params.id<users.length)
+    {
+        setName(users[params.id].name)
+        setEmail(users[params.id].email)
+        setMobile(users[params.id].mobile)
+        setCity(users[params.id].city)
+        setBatch(users[params.id].batch)
+    }
+    else
+    {
+      alert("Invalid User ID")
+      navigate("/dashboard")
+    }
+  })
   
 
   return <>

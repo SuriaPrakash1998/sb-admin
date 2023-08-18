@@ -3,6 +3,7 @@ import Card from './Card'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import Profile from './Profile';
 
 function Dashboard({users,setUsers}) {   
   let navigate = useNavigate();
@@ -95,7 +96,10 @@ function Dashboard({users,setUsers}) {
                                 </Button>
                                 &nbsp;&nbsp;
                                 <Button variant="danger" onClick={()=>handleDelete(i)}>Delete</Button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <Button onClick={()=>{navigate(`/profile/${i}`)}}><i className="fa-solid fa-user" style={{fontSize : "24px"}}></i></Button>
                                 </td>
+                                
                                 
                                 </tr>
                               })

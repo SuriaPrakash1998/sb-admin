@@ -4,7 +4,7 @@ import Dashboard from "./Components/Dashboard";
 import AddUser from "./Components/AddUser";
 import EditUser from "./Components/EditUser";
 import { useState } from "react";
-
+import Profile from "./Components/Profile";
 
 function App() {
   let [users,setUsers] = useState([
@@ -40,6 +40,7 @@ function App() {
                 <Route path = "/dashboard" element={<Dashboard users={users} setUsers={setUsers}/>}/>
                 <Route path = "/add-users" element={<AddUser users={users} setUsers={setUsers} />}/>
                 <Route path='/edit-user/:id' element={<EditUser users={users} setUsers={setUsers}/>}/>
+                <Route path='/profile/:id' element={<Profile users={users} setUsers={setUsers}/>}/>
                 
                 
                 </Routes>      

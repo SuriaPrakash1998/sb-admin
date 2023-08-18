@@ -12608,3 +12608,17 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%
 }
+
+/* Add custom styling for the vertical navigation */
+.navbar-nav.flex-column {
+  width: 50%; /* Make sure the vertical menu takes full width */
+}
+
+.navbar-nav.flex-column .nav-item {
+  margin-right: 0; /* Remove right margin to make it full width */
+  margin-bottom: 10px; /* Add some spacing between items */
+}
+
+.navbar-nav.flex-column .nav-link {
+  padding: 10px; /* Add padding for better readability */
+}
