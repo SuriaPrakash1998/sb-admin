@@ -3,7 +3,7 @@ import Card from './Card'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
-import Profile from './Profile';
+
 
 function Dashboard({users,setUsers}) {   
   let navigate = useNavigate();

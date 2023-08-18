@@ -36,12 +36,12 @@ function Profile() {
               <hr class="my-4"/>
               <div class="d-grid mb-2">
                 <button class="btn btn-google btn-login text-uppercase fw-bold" type="submit">
-                <a target = "_blank" href="http://gmail.com/"  style={{ color: "white" }}> <i class="fab fa-google me-2"></i>Sign in with Google</a>
+                <a target = "_blank" href="http://gmail.com/" rel="noreferrer" style={{ color: "white" }}> <i class="fab fa-google me-2"></i>Sign in with Google</a>
                 </button>
               </div>
               <div class="d-grid mb-2">
                 <button class="btn btn-facebook btn-login text-uppercase fw-bold" type="submit">
-                <a target = "_blank" href="https://www.facebook.com//"  style={{ color: "white" }}> <i class="fab fa-facebook me-2"></i>Sign in with Facebook</a>
+                <a target = "_blank" href="https://www.facebook.com//" rel="noreferrer" style={{ color: "white" }}> <i class="fab fa-facebook me-2"></i>Sign in with Facebook</a>
                 </button>
               </div>
             </form>
