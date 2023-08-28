@@ -1,58 +1,62 @@
-import { BrowserRouter,Routes,Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./Components/Sidebar";
 import Dashboard from "./Components/Dashboard";
 import AddUser from "./Components/AddUser";
 import EditUser from "./Components/EditUser";
-import { useState } from "react";
 import Profile from "./Components/Profile";
+import { Navigate } from "react-router-dom";
+import Details from "./Components/Details/Details.js";
+import Account from "./Components/Details/Account";
+import Bill from "./Components/Details/Bill";
+import Password from "./Components/Details/Password";
+import Payments from "./Components/Details/Payments";
+import Profiles from "./Components/Details/Profiles";
+import UserContextComponent from "./Components/context/UserContextComponent";
+
 
 function App() {
-  let [users,setUsers] = useState([
-    {
-      name : "Suria",
-      email : "suria@gmail.com",
-      mobile : '1234567890',
-      city : "chennai",
-      batch : "B46WET"
-    },
-    {
-      name : "Prakash",
-      email : "prakash@gmail.com",
-      mobile : '1234565432',
-      city : "palani",
-      batch : "B46WET"
-    },
-    {
-      name : "Ravi",
-      email : "Ravi@gmail.com",
-      mobile : '9898987878',
-      city : "Trichy",
-      batch : "B46WET"
-    }
-  ])
-  return  <>
-  <BrowserRouter>
-              <div id="wrapper">
-                <Sidebar />
-                <div className="container-fluid">
-                <Routes>  
-                
-                <Route path = "/dashboard" element={<Dashboard users={users} setUsers={setUsers}/>}/>
-                <Route path = "/add-users" element={<AddUser users={users} setUsers={setUsers} />}/>
-                <Route path='/edit-user/:id' element={<EditUser users={users} setUsers={setUsers}/>}/>
-                <Route path='/profile/:id' element={<Profile users={users} setUsers={setUsers}/>}/>
-                
-                
-                </Routes>      
-                   
-
-                  </div>    
-              </div>
-  </BrowserRouter>
-            </> 
-
-
+ 
+  return (
+    <>
+      <BrowserRouter>
+        <div id="wrapper">
+          <Sidebar />
+          <div className="container-fluid">
+            
+              <Routes>
+                <Route
+                  path="/dashboard"
+                  element={<UserContextComponent><Dashboard   /></UserContextComponent>}
+                />
+                <Route
+                  path="/add-users"
+                  element={<UserContextComponent><AddUser   /></UserContextComponent>}
+                />
+                <Route
+                  path="/edit-user/:id"
+                  element={<UserContextComponent><EditUser   /></UserContextComponent>}
+                />
+                <Route
+                  path="/profile/:id"
+                  element={<Profile   />}
+                />
+                <Route path="/details" element={<Details />}>
+                  <Route path="account" element={<Account />} />
+                  <Route path="bill" element={<Bill />} />
+                  <Route path="payments" element={<Payments />} />
+                  <Route path="password" element={<Password />} />
+                  <Route path="profiles" element={<Profiles />} />
+                </Route>
+                {/* routing to dashboard as home page , route path '*' means any other non component pages are accessed then it is automatically re directed to dashboard page" */}
+                <Route path="*" element={<Navigate to="/dashboard" />} />
+              </Routes>
+            
+          </div>
+        </div>
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;
-  

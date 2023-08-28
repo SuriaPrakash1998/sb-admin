@@ -1,10 +1,12 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from "./context/UserContextComponent";
 
 
-function AddUser({users,setUsers}) {
+function AddUser() {
+  let context = useContext(UserContext);
   let [name,setName] = useState("")
   let [email,setEmail] = useState("")
   let [mobile,setMobile] = useState("")
@@ -13,7 +15,7 @@ function AddUser({users,setUsers}) {
   let navigate = useNavigate()
 
   let handleSave = ()=>{
-    let newArray = [...users]
+    let newArray = [...context.users]
     newArray.push({
       name,
       email,
@@ -21,7 +23,7 @@ function AddUser({users,setUsers}) {
       city,
       batch
     })
-    setUsers(newArray)
+    context.setUsers(newArray)
     navigate('/dashboard')
   }
 
